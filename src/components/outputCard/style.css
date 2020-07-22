@@ -1,5 +1,6 @@
 .info{
     text-align:right ;
+    margin-right: 1rem;
 }
 .visualInfo{
     display: flex;

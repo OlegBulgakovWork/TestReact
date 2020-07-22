@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <header className='header'>
-    <Card/>
+      <Card />
     </header>
   );
 }

@@ -1,0 +1,7 @@
+.table{
+    border: 1px solid grey;
+    margin: 1rem;
+}
+.input-filter{
+    min-width: 9rem;
+}

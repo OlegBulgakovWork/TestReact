@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import moment from 'moment';
 import { Tabs } from "antd";
 import InputCard from "../inputCard/InputCard";
 import OutputCard from "../outputCard/OutputCard";
@@ -8,20 +9,24 @@ const Card = () => {
   const { TabPane } = Tabs;
 
   const [name, setName] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("Male");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [uploadedFile, setUploadedFile] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(moment().format('YYYY-MM-DD'));
+  const [disabled, setDisabled] = useState(true);
+  const [activeTab, setActiveTab] = useState('1');
 
   return (
-    <Tabs defaultActiveKey="1">
-      <TabPane tab="Input" key="1">
+    <Tabs activeKey={activeTab} style={{ width: 700 }} onTabClick={(activeKey) => setActiveTab(activeKey)}>
+      <TabPane tab="Input" key="1" style={{ border: '1px solid grey' }} >
         <InputCard
+          setActiveTab={setActiveTab}
           setName={setName}
           setGender={setGender}
+          gender={gender}
           setAge={setAge}
           setEmail={setEmail}
           setCountry={setCountry}
@@ -30,10 +35,11 @@ const Card = () => {
           uploadedFile={uploadedFile}
           setDate={setDate}
           date={date}
+          setDisabled={setDisabled}
         />
       </TabPane>
-      <TabPane tab="Output" key="2">
-      <OutputCard
+      <TabPane tab="Output" key="2" disabled={disabled} style={{ border: '1px solid grey' }}>
+        <OutputCard
           name={name}
           gender={gender}
           age={age}
@@ -42,9 +48,9 @@ const Card = () => {
           city={city}
           uploadedFile={uploadedFile}
           date={date}
-        style={{maxWidth:900}}/>
+          style={{ width: 900 }} />
       </TabPane>
-    </Tabs>
+    </Tabs >
   );
 };
 export default Card;

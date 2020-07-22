@@ -1,5 +1,12 @@
 .row {
     display: flex;
     flex-direction: row;
-    
+    justify-content: space-around;
+    margin: 0.5rem 1rem;;
 }
+
+.continue{
+    display: flex;
+    justify-content: flex-end;
+    margin:1rem 3rem;
+}   
